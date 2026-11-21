@@ -1,0 +1,21 @@
+plugins { id 'java'; id 'net.minecraftforge.gradle' version '[6.0,6.2)' }
+version = '1.0.0-r28'
+group = 'cn.blockforge.generated.furnitureworkwand'
+base { archivesName = 'furniture_workwand' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: 'official', version: '1.20.1' }
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+    // 沉浸式家具是硬前置：编译期对着它的 API 写，运行期由玩家自己装（这个 jar 不会打进成品）。
+    // 只调用它自己声明的类和成员，所以直接用发布版 jar 即可，不需要再反混淆一遍。
+    compileOnly files('libs/immersive_furniture-forge-0.4.1_1.20.1.jar')
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+processResources {
+    def props = [mod_id: 'furniture_workwand', mod_name: '沉浸式家具：工作方块', mod_version: project.version,
+                 minecraft_version: '1.20.1', forge_version: '47.4.0']
+    inputs.properties props
+    filteringCharset = 'UTF-8'
+    filesMatching('META-INF/mods.toml') { expand props }
+}
+jar.finalizedBy('reobfJar')

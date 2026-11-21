@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GSS",
+    "PP "
+  ],
+  "key": {
+    "G": { "item": "minecraft:gold_ingot" },
+    "S": { "item": "minecraft:cobblestone" },
+    "P": { "tag": "minecraft:logs" }
+  },
+  "result": {
+    "item": "furniture_workwand:work_material",
+    "count": 1
+  }
+}

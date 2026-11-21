@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " P ",
+    " G ",
+    " P "
+  ],
+  "key": {
+    "P": { "tag": "minecraft:planks" },
+    "G": { "item": "minecraft:gold_ingot" }
+  },
+  "result": {
+    "item": "furniture_workwand:work_wand",
+    "count": 1
+  }
+}
